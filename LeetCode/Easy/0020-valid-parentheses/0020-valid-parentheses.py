@@ -10,8 +10,7 @@ class Solution:
                 stack.append("]")
             elif not stack or stack.pop() != char:
                 return False
-        if not stack :
-            return True
+        return not stack
                 
                 
         
