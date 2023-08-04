@@ -2,6 +2,13 @@
 
 [문제 링크](https://www.acmicpc.net/problem/1253) 
 
+## TIP
+```python
+for i in range(n):
+    cnt += twopointer(arr[:i] + arr[i+1:], arr[i])
+```
+이 방식으로 짜는게 더 나은 것 같다.
+
 ### 성능 요약
 
 메모리: 65164 KB, 시간: 1404 ms
