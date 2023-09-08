@@ -1,10 +1,6 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        _dict = {}
-        for number in nums:
-            if number not in _dict :
-                _dict[number] = True
-                
+        _dict = set(nums)        
         maxLength = 0
         
         for number in nums:
