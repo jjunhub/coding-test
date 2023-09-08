@@ -10,14 +10,10 @@ class Solution:
         
         for index, number in enumerate(nums):
             if number -1 not in _dict :
-                while(True):    
-                    if length > maxLength :
-                        maxLength = length
-                    if number + 1 in _dict: 
-                        number +=1 
-                        length += 1
-                    else :
-                        length = 1
-                        break
-            
+                cnt = 1
+                target = number + 1
+                while target in _dict:
+                    target += 1
+                    cnt += 1
+                maxLength = max(maxLength, cnt)
         return maxLength
