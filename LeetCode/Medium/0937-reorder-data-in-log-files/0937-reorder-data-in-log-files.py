@@ -9,5 +9,4 @@ class Solution:
             else :
                 letters.append(log)
         result = sorted(letters, key = lambda x : (x.split()[1:], x.split()[0]))
-        result.extend(digits)
-        return result
+        return result + digits
