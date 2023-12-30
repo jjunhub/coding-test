@@ -8,5 +8,5 @@ class Solution:
                 digits.append(log)
             else :
                 letters.append(log)
-        result = sorted(letters, key = lambda x : (x.split()[1:], x.split()[0]))
-        return result + digits
+        letters.sort(key = lambda x : (x.split()[1:], x.split()[0]))
+        return letters + digits
