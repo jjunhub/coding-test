@@ -1,13 +1,10 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        dct = {}
+        dct = collections.defaultdict(list)
         for idx, el in enumerate(strs):
             sortedStr = "".join(sorted(el))
+            dct[sortedStr].append(idx)
             
-            if sortedStr in dct:
-                dct[sortedStr].append(idx)
-            else :
-                dct[sortedStr] = [idx]
         
         sortedDict = sorted(dct.items(), key = lambda x : len(x[1]))
         
