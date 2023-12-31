@@ -11,8 +11,7 @@ class Solution:
                     left -= 1
                     right += 1
                 word = s[left+1 : right]            
-                if len(longestWord) <= len(word):
-                    longestWord = word
+                longestWord = max(word, longestWord, key= len)
                     
         return longestWord
                 
