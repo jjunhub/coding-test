@@ -1,15 +1,8 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         dct = collections.defaultdict(list)
-        for idx, el in enumerate(strs):
-            sortedStr = "".join(sorted(el))
-            dct[sortedStr].append(idx)
+        for str in strs:
+            sortedStr = "".join(sorted(str))
+            dct[sortedStr].append(str)
             
-        result = [ ]
-        for key, values in dct.items():
-            tempResult = []
-            for val in values:
-                tempResult.append(strs[val])
-            result.append(tempResult)
-            
-        return result
+        return dct.values()
