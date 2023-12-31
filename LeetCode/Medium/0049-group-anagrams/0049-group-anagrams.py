@@ -5,14 +5,10 @@ class Solution:
             sortedStr = "".join(sorted(el))
             dct[sortedStr].append(idx)
             
-        
-        sortedDict = sorted(dct.items(), key = lambda x : len(x[1]))
-        
-    
         result = [ ]
-        for el in sortedDict:
+        for key, values in dct.items():
             tempResult = []
-            for val in el[1]:
+            for val in values:
                 tempResult.append(strs[val])
             result.append(tempResult)
             
