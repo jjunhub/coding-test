@@ -4,9 +4,9 @@ def solution(phone_book):
     
     for phone in phone_book:
         prefix = ""
-        for number in phone[:-1]:
+        for number in phone:
             prefix += number
-            if prefix in _dict:
+            if prefix != phone and prefix in _dict:
                 return False
     
     return True
