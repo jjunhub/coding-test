@@ -1,10 +1,12 @@
-import collections
+from collections import Counter
 def solution(phone_book):
-    _dict = collections.Counter(phone_book)
+    _dict = Counter(phone_book)
     
     for phone in phone_book:
-        for i in range(1, len(phone)):
-            if phone[:i] in _dict:
+        prefix = ""
+        for number in phone[:-1]:
+            prefix += number
+            if prefix in _dict:
                 return False
     
     return True
