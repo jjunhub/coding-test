@@ -8,9 +8,7 @@ class node:
         self.prev = prev
 
 def showNodes(head):
-    cur = head
-    if cur.val == "#":
-        cur = cur.next
+    cur = head.next
     while cur:
         print(cur.val, end="")
         cur = cur.next
@@ -20,7 +18,6 @@ testcase = int(input())
 for _ in range(testcase):
     inputValue = input().rstrip()
     head = node()
-    head.val = "#"
     current = head
 
     for char in inputValue:
@@ -35,7 +32,6 @@ for _ in range(testcase):
                 if current.next != None :
                     current.next.prev = current.prev
                 current = current.prev
-            
         else :
             newNode = node()
             newNode.val = char
