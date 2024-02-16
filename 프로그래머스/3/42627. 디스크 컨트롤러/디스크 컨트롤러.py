@@ -4,11 +4,7 @@ def solution(jobs):
     currentTime = 0
     totalWaitingTime = 0
     heapify(jobs)
-    # print(f'currentT = {currentTime}, inT = 0, workT = 0')
     while jobs:
-        # print(jobs)
-        
-        # 현재 시간이 가장 앞서 있는 작업의 요청 시간보다 작다면,
         
         if currentTime < jobs[0][0]:
             # 그 시간까지 기다려야한다.
@@ -22,7 +18,6 @@ def solution(jobs):
             while jobs and jobs[0][0] <= currentTime :
                 waitingJobs.append(heappop(jobs))
             
-            # print(f'waitingJobs = {waitingJobs}')
             for index, job in enumerate(waitingJobs):
                 if job[1] < minWorkTime :
                     minWorkTime = job[1]
@@ -43,12 +38,4 @@ def solution(jobs):
             currentTime += workTime
             totalWaitingTime += waitingTime
             
-        # print(f'currentT = {currentTime}, inT = {inTime}, workT ={workTime}')
-        # print(f'totalWaitingT = {totalWaitingTime}')
-        
     return int(totalWaitingTime / numOfJobs)
-
-# print('--')
-# jobs = [[0,4], [1,3], [2,2]]
-# print(solution(jobs))
-# print('--')
