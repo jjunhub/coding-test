@@ -1,15 +1,16 @@
 def solution(numbers, target):
-    answer = []
+    answer = 0
     
     def fun(val, next_idx):
-        # print(f'fun({val}, {next_idx})')
+        nonlocal answer
+	
         if next_idx == len(numbers):
             if val == target:
-                answer.append(0)
+                answer += 1
             return
         fun(val + numbers[next_idx], next_idx+1)
         fun(val - numbers[next_idx], next_idx+1)
     
     fun(0, 0)
     
-    return len(answer)
+    return answer
