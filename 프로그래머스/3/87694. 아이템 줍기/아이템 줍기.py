@@ -1,6 +1,7 @@
 from collections import deque
 
 def solution(rectangle, characterX, characterY, itemX, itemY):
+    
     # 직사각형의 변 위에 존재하는 지를 파악하는 함수
     def isOnRectangle(point):
         point_x, point_y = point
@@ -19,13 +20,6 @@ def solution(rectangle, characterX, characterY, itemX, itemY):
             x1, y1, x2, y2 = rec
             if x1 < point_x < x2 and y1 < point_y < y2:
                 return True
-        return False
-    
-    def checkSameRectangle(before, after):
-        for bef in before:
-            for aft in after:
-                if bef == aft:
-                    return True
         return False
     
     def bfs(start, end):
