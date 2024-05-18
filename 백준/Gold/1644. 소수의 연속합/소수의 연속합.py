@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 primeNum = { i for i in range(3, N+1, 2)}
 primeNum.add(2)
