@@ -2,18 +2,11 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-yeol, hang = map(int, input().split())
-matrix = list()
-visited = [ [False] * yeol for _ in range(hang)]
-
-for _ in range(hang):
-  line = list(map(int, input().split()))
-  matrix.append(line)
-
 def bfs(start_list) -> int:
   queue = deque()
-  queue.extend(start_list) # ((h,y), 0)
+  queue.extend(start_list) # [ ((h1,y1), 0), ... ]
   max_day = -1
+
   while queue:
     point, day = queue.popleft()
     max_day = max(day, max_day)
@@ -23,33 +16,33 @@ def bfs(start_list) -> int:
 
     for direction in range(4):
       next_h, next_y = ( h + dy[direction], y + dx[direction])
-      if next_h < 0 or next_h >= hang or next_y < 0 or next_y >= yeol:
-        continue
-      else :
-        if visited[next_h][next_y] == False and matrix[next_h][next_y] == 0 :
-          visited[next_h][next_y] = True
+      if 0 <= next_h < hang and 0 <= next_y < yeol:
+        if matrix[next_h][next_y] == 0:
+          matrix[next_h][next_y] = 1
           next = (next_h, next_y)
           queue.append((next, day+1))
   return max_day
 
+def check_any_tomato_not_ripen() -> bool:
+  for h in range(hang):
+    for y in range(yeol):
+      if matrix[h][y] == 0:
+        return True
+  return False
 
-start_list = []
-for h in range(hang):
-  for y in range(yeol):
-    if matrix[h][y] == 1:
-      visited[h][y] = True
-      start_list.append(((h,y),0))
-    elif matrix[h][y] == -1:
-      visited[h][y] = True
+def find_tomato_locations() -> list:
+  start_list = []
+  for h in range(hang):
+    for y in range(yeol):
+      if matrix[h][y] == 1:
+        start_list.append(((h,y),0))
+  return start_list
 
-max_day = bfs(start_list)
+yeol, hang = map(int, input().split())
+matrix = [list(map(int, input().split())) for _ in range(hang)]
+max_day = bfs(find_tomato_locations())
 
-flag = True
-for h in range(hang):
-  if False in visited[h] :
-      flag = False
-
-if flag :
-  print(max_day)
-else :
+if check_any_tomato_not_ripen() :
   print(-1)
+else :
+  print(max_day)
