@@ -1,5 +1,7 @@
 from collections import defaultdict
 from heapq import heappop, heappush
+import sys
+input = sys.stdin.readline
 
 def dijkstra(start_node, end_node):
   visited = set()
