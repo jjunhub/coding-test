@@ -1,6 +1,4 @@
-import sys
 from collections import deque
-input = sys.stdin.readline
 
 def bfs(s_row : int, s_col : int, rows :int, cols :int) -> int:
   DIRECTIONS = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -32,5 +30,5 @@ def bfs(s_row : int, s_col : int, rows :int, cols :int) -> int:
   return max_distance
 
 R, C = map(int, input().split())
-matrix = [list(input().rstrip()) for _ in range(R)]
+matrix = [list(input()) for _ in range(R)]
 print(bfs(0,0,R,C))
