@@ -1,4 +1,3 @@
-from collections import deque
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         matrix = [[ 0 for _ in range(n)] for _ in range(m)]
