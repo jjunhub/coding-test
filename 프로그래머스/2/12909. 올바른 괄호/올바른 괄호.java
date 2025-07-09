@@ -6,28 +6,37 @@
 **/
 class Solution {
     public static char OPEN = '(';
-    // public static String CLOSE = ")";
+    public static Integer numberOfOpen = 0;
+    public static boolean answer = true;
     
-    boolean solution(String s) {
-        boolean answer = true;
-        Integer numberOfOpen = 0;
-        
-        for( char c : s.toCharArray()) {
-            if (c == OPEN) {
-                numberOfOpen += 1;
-            } else {
-                numberOfOpen -=1;
-            }
-            
-            if (numberOfOpen < 0) {
-                answer = false;
-            }
+    public boolean solution(String s) {
+
+        for (char c : s.toCharArray()) {
+            numberOfOpen += decideChar(c);
+            checkCloseExceedOpen();
         }
         
+        checkRemainGalho();
+        return answer;
+    }
+    
+    private static void checkCloseExceedOpen() {
+        if (numberOfOpen < 0) {
+            answer = false;
+        }
+    }
+    
+    private static Integer decideChar(char c) {
+        if (c == OPEN) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+    
+    private static void checkRemainGalho() {
         if (numberOfOpen != 0) {
             answer = false;
         }
-    
-        return answer;
     }
 }
